@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://bwmob7843oi3k"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_mcvr8"]
+[ext_resource type="PackedScene" uid="uid://eea060x1rh27" path="res://scenes/player.tscn" id="2_ldqfl"]
+[ext_resource type="PackedScene" uid="uid://2aqd28i3gmgt" path="res://scenes/enemy_spawner.tscn" id="4_qruwp"]
+[ext_resource type="PackedScene" uid="uid://c6idl8yb64wfg" path="res://scenes/hud.tscn" id="5_hhvm2"]
+[ext_resource type="AudioStream" uid="uid://cj8mf8fpcyady" path="res://assets/audio/enemy_dead.wav" id="6_1d8fr"]
+[ext_resource type="AudioStream" uid="uid://c4y1q28nr24oi" path="res://assets/audio/lost_live.wav" id="7_2s81f"]
+[ext_resource type="AudioStream" uid="uid://dsvnigwp8dy22" path="res://assets/audio/player_shot.wav" id="8_4h88o"]
+[ext_resource type="AudioStream" uid="uid://yo0nn6j3fofw" path="res://assets/audio/game_music.mp3" id="8_4mppx"]
+[ext_resource type="Texture2D" uid="uid://d3qcrxvo651cd" path="res://assets/water_background.png" id="8_tp7vb"]
+[ext_resource type="AudioStream" uid="uid://ckr6nq6jh647f" path="res://assets/audio/game_over.wav" id="9_i8gpr"]
+[ext_resource type="Texture2D" uid="uid://d18ei2q6kdfx8" path="res://assets/sub.png" id="10_2sb0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcldr"]
+size = Vector2(99, 1584)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ghnat"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 400, 1)
+initial_velocity_min = -100.0
+initial_velocity_max = -100.0
+gravity = Vector3(-200, 0, 0)
+scale_max = 3.0
+color = Color(0.882353, 0.717647, 0.835294, 0.8)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_mcvr8")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("5_hhvm2")]
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="EnemyDeadSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_1d8fr")
+
+[node name="LostLiveSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_2s81f")
+
+[node name="PlayerShootSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_4h88o")
+volume_db = -4.0
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_i8gpr")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_4mppx")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("8_tp7vb")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_ldqfl")]
+position = Vector2(143, 405)
+
+[node name="Sprite2D" parent="Player" index="0"]
+rotation = 0.0
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("10_2sb0u")
+
+[node name="CollisionShape2D" parent="Player" index="1"]
+position = Vector2(2, 9)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_qruwp")]
+
+[node name="EnemyCleaner" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCleaner"]
+position = Vector2(-55, 312)
+shape = SubResource("RectangleShape2D_lcldr")
+
+[node name="BackgroundWarpEffect" type="GPUParticles2D" parent="."]
+position = Vector2(1278, 334)
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_ghnat")
+lifetime = 10.0
+
+[connection signal="collision_with_enemy" from="Player" to="." method="_on_player_collision_with_enemy"]
+[connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
+[connection signal="rocket_enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_rocket_enemy_spawned"]
+[connection signal="area_entered" from="EnemyCleaner" to="." method="_on_enemy_cleaner_area_entered"]
+
+[editable path="Player"]

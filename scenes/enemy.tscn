@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh87clh7ux3fn"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xwoj7"]
+[ext_resource type="Texture2D" uid="uid://bbrhf37gmu5i6" path="res://assets/jellyfish.png" id="2_tgtg3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0enfl"]
+radius = 18.0
+height = 58.0
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_xwoj7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 5
+rotation = 0.322886
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_tgtg3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_0enfl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
