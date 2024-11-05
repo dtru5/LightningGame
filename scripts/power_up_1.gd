@@ -7,5 +7,4 @@ func _physics_process(delta: float) -> void:
 	global_position.x -= speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	print("hi\n")
 	queue_free()
