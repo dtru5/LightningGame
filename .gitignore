@@ -14,3 +14,8 @@ export/
 .cache/
 .env/
 *.tmp
+
+# Ignore Godot editor and imported cache files
+.godot/editor/
+.godot/imported/
+.godot/shader_cache/
