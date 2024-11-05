@@ -18,3 +18,10 @@ func off_visible_left_lives(score_amount: int):
 			life_icons[i].visible = false
 	else:
 		pass
+
+func on_visible_lives(lives: int):
+	if lives == 3:
+		life_icons[2].visible = true
+	elif lives == 2:
+		life_icons[1].visible = true
+	pass

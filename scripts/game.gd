@@ -17,9 +17,10 @@ func _ready():
 	game_music.play()
 	hud.update_score_ui(score)
 	hud.off_visible_left_lives(lives)
-	
 	# init high_score.dat file
 	init_high_score_file()
+	
+	
 
 func init_high_score_file() -> void:
 	if not FileAccess.file_exists("user://high_score.dat"):
@@ -29,6 +30,7 @@ func init_high_score_file() -> void:
 
 func _on_enemy_cleaner_area_entered(area: Area2D) -> void:
 	area.queue_free()
+	
 	
 func _on_player_collision_with_enemy() -> void:
 	lives -= 1
@@ -67,3 +69,9 @@ func _on_rocket_enemy_died() -> void:
 func _on_enemy_spawner_rocket_enemy_spawned(enemy_rocket_instance):
 	add_child(enemy_rocket_instance)
 	enemy_rocket_instance.rocket_enemy.connect("update_score", _on_rocket_enemy_died)
+
+
+func _on_player_health_powerup() -> void:
+	if lives < 3:
+		lives += 1
+		hud.on_visible_lives(lives)

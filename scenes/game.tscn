@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://eea060x1rh27" path="res://scenes/player.tscn" id="2_ldqfl"]
 [ext_resource type="PackedScene" uid="uid://2aqd28i3gmgt" path="res://scenes/enemy_spawner.tscn" id="4_qruwp"]
 [ext_resource type="PackedScene" uid="uid://c6idl8yb64wfg" path="res://scenes/hud.tscn" id="5_hhvm2"]
-[ext_resource type="AudioStream" uid="uid://cj8mf8fpcyady" path="res://assets/audio/enemy_dead.wav" id="6_1d8fr"]
-[ext_resource type="AudioStream" uid="uid://c4y1q28nr24oi" path="res://assets/audio/lost_live.wav" id="7_2s81f"]
-[ext_resource type="AudioStream" uid="uid://dsvnigwp8dy22" path="res://assets/audio/player_shot.wav" id="8_4h88o"]
-[ext_resource type="AudioStream" uid="uid://yo0nn6j3fofw" path="res://assets/audio/game_music.mp3" id="8_4mppx"]
-[ext_resource type="Texture2D" uid="uid://d3qcrxvo651cd" path="res://assets/water_background.png" id="8_tp7vb"]
-[ext_resource type="AudioStream" uid="uid://ckr6nq6jh647f" path="res://assets/audio/game_over.wav" id="9_i8gpr"]
-[ext_resource type="Texture2D" uid="uid://d18ei2q6kdfx8" path="res://assets/sub.png" id="10_2sb0u"]
+[ext_resource type="AudioStream" uid="uid://dmuu7xgvjs2m0" path="res://assets/audio/enemy_dead.wav" id="6_1d8fr"]
+[ext_resource type="AudioStream" uid="uid://bhxufflfjud4d" path="res://assets/audio/lost_live.wav" id="7_2s81f"]
+[ext_resource type="AudioStream" uid="uid://cjp8qcpdtt1cw" path="res://assets/audio/player_shot.wav" id="8_4h88o"]
+[ext_resource type="AudioStream" uid="uid://bl3s0yghx32nm" path="res://assets/audio/game_music.mp3" id="8_4mppx"]
+[ext_resource type="Texture2D" uid="uid://duiif1i76vjxa" path="res://assets/water_background.png" id="8_tp7vb"]
+[ext_resource type="AudioStream" uid="uid://dr840hm6urn57" path="res://assets/audio/game_over.wav" id="9_i8gpr"]
+[ext_resource type="Texture2D" uid="uid://dr2sn8w8rgwmc" path="res://assets/sub.png" id="10_2sb0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcldr"]
 size = Vector2(99, 1584)
@@ -90,6 +90,7 @@ process_material = SubResource("ParticleProcessMaterial_ghnat")
 lifetime = 10.0
 
 [connection signal="collision_with_enemy" from="Player" to="." method="_on_player_collision_with_enemy"]
+[connection signal="health_powerup" from="Player" to="." method="_on_player_health_powerup"]
 [connection signal="timeout" from="Player/rapid_fire_timer" to="Player" method="_on_rapid_fire_timer_timeout"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
 [connection signal="rocket_enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_rocket_enemy_spawned"]

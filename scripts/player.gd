@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal collision_with_enemy
+signal health_powerup
 
 const start_speed: int = 0
 const move_speed: int = 800
@@ -67,6 +68,9 @@ func shoot() -> void:
 func enable_rapid_fire() -> void:
 	rocket_time_limiter = 0.05
 	rapid_fire_timer.start(3)
+	
+func hit_health_powerup() -> void:
+	emit_signal("health_powerup")
 	
 func _on_rapid_fire_timer_timeout():
 	rocket_time_limiter = 0.28
