@@ -1,0 +1,16 @@
+# Ignore Godot import files
+*.import
+.import/
+
+# Ignore exported builds
+export/
+
+# Ignore temporary Godot files
+*.godot
+*.mono/
+*.gen.*
+
+# Ignore cache and temporary files
+.cache/
+.env/
+*.tmp

@@ -2,8 +2,8 @@ extends Area2D
 
 signal update_score
 
-@export var speed_x: int = 300
-@export var speed_y: int = 50
+@export var speed_x: int = 280
+@export var speed_y: int = 40
 @export var rotation_speed: float = 0.05
 @export var enemy_flying_direction: int = randi_range(-1, 1)
 @export var acceleration: int = 3

@@ -7,5 +7,6 @@ func _physics_process(delta: float) -> void:
 	global_position.x -= speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	print("hi\n")
+	if body.name == "Player":
+		body.enable_rapid_fire()
 	queue_free()

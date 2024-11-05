@@ -34,7 +34,8 @@ func _on_player_collision_with_enemy() -> void:
 	lives -= 1
 	hud.off_visible_left_lives(lives)
 	lost_live_sound.play()
-	score -= 100 # when enemy hit player you get 0 points: -100+100
+	score -= 200 # when enemy hit player you get 0 points: -100+100
+	
 	if (lives < 1):
 		player_scene.die()
 		game_over_sound.play()
@@ -54,12 +55,12 @@ func close() -> void:
 	get_tree().quit()
 
 func _on_enemy_died() -> void:
-	score += 100
+	score += 200
 	hud.update_score_ui(score)
 	enemy_dead_sound.play()
 	
 func _on_rocket_enemy_died() -> void:
-	score += 400
+	score += 200
 	hud.update_score_ui(score)
 	enemy_dead_sound.play()
 	

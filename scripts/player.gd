@@ -2,16 +2,18 @@ extends CharacterBody2D
 
 signal collision_with_enemy
 
-const start_speed: int = 50
+const start_speed: int = 0
 const move_speed: int = 800
 const falling_speed: int = 10
 const area_width: int = 1280
 const area_height: int = 720
-var rocket_time_limiter: float = 0.2
+var rocket_time_limiter: float = 0.28
 
 var is_rocket_blocked = false
 var rocket_scene = preload("res://scenes/rocket.tscn")
 @onready var rocket_container: Node = get_node("RocketContainer")
+
+@onready var rapid_fire_timer : Node = get_node("rapid_fire_timer")
 
 @onready var player_shoot_sound = $"../SFX/PlayerShootSound"
 
@@ -52,7 +54,7 @@ func limit_area_movement(width: int, height: int) -> void:
 func shoot() -> void:
 	var rocket_instance: Area2D = rocket_scene.instantiate()
 	
-	if Input.is_action_just_pressed("shoot") && is_rocket_blocked == false:
+	if Input.is_action_pressed("shoot") && is_rocket_blocked == false:
 		player_shoot_sound.play()
 		rocket_container.add_child(rocket_instance)
 		rocket_instance.global_position = global_position
@@ -62,6 +64,13 @@ func shoot() -> void:
 		await get_tree().create_timer(rocket_time_limiter).timeout
 		is_rocket_blocked = false 
 		
+func enable_rapid_fire() -> void:
+	rocket_time_limiter = 0.05
+	rapid_fire_timer.start(3)
+	
+func _on_rapid_fire_timer_timeout():
+	rocket_time_limiter = 0.28
+	
 func hurt_player() -> void:
 	emit_signal("collision_with_enemy")
 
