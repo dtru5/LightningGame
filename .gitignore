@@ -6,7 +6,6 @@
 export/
 
 # Ignore temporary Godot files
-*.godot
 *.mono/
 *.gen.*
 
