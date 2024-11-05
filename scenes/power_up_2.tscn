@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ybxnwlxs4ed0"]
+
+[ext_resource type="Script" path="res://scripts/power_up_2.gd" id="1_dcmew"]
+[ext_resource type="Texture2D" uid="uid://djuxkf51tvay6" path="res://assets/heart.png" id="1_ob81b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv6ut"]
+radius = 12.9643
+height = 37.2778
+
+[node name="power_up_2" type="Area2D"]
+script = ExtResource("1_dcmew")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("1_ob81b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(2.31405, 1.77049)
+shape = SubResource("CapsuleShape2D_uv6ut")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
