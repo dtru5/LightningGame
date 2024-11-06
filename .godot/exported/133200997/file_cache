@@ -1,0 +1,13 @@
+res://scenes/enemy.tscn::71ad30d6938e7157e21a4a24701fe381::1730782196::res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
+res://scenes/enemy_spawner.tscn::e990f7e5578c564d83125782985f84d9::1730782196::res://.godot/exported/133200997/export-e56eb753f9e7a01522dd85211d4eb598-enemy_spawner.scn
+res://scenes/file_loader.tscn::4521a148cb57ace5560ab51829d22809::1730782196::res://.godot/exported/133200997/export-3c05badcd5c67a20ee12f0a9a5961093-file_loader.scn
+res://scenes/game.tscn::aa07ca30d480d6366f0cd40e8dec5576::1730864912::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/game_over.tscn::f87e0f0ab519537d278d43c1d26e1bc3::1730782196::res://.godot/exported/133200997/export-21b8bee24a2bf9e9929bc898cc82b612-game_over.scn
+res://scenes/high_score.tscn::a2df07a8b2752a37fe77b58d02976933::1730782196::res://.godot/exported/133200997/export-29bf98732ef17a43ab81be9d68de6da1-high_score.scn
+res://scenes/hud.tscn::97bfad46ccacb5c8c69a492b29dda162::1730782196::res://.godot/exported/133200997/export-38bf74ff262409a94a41206b2b776d33-hud.scn
+res://scenes/player.tscn::73e6ada5de891378160f888c35bb8432::1730863769::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://scenes/power_up_1.tscn::4bea9bbedf7ee5adaf5d10b49ba87a59::1730863769::res://.godot/exported/133200997/export-59020ae1f5f22b5e92490aa0cf9398f5-power_up_1.scn
+res://scenes/power_up_2.tscn::0d781566ad10d93251b4f576835e1dc5::1730863769::res://.godot/exported/133200997/export-ae1e5f6608f3bf7952b6d5bd46c53a4a-power_up_2.scn
+res://scenes/rocket.tscn::58e3b4f708192e8b5b2b241c82c3ba7e::1730782196::res://.godot/exported/133200997/export-0598e23545bc6bb0aa1ecb7307c4959d-rocket.scn
+res://scenes/rocket_enemy.tscn::5f633415a797c61222fa738918f299fc::1730782196::res://.godot/exported/133200997/export-7f3f9e3751e0611648f5c424dc28464f-rocket_enemy.scn
+res://scenes/rocket_enemy_path.tscn::ee2218368ab66567fb3d823a9a98be50::1730782196::res://.godot/exported/133200997/export-cd111474279f6a0c7ef458a60a52f8aa-rocket_enemy_path.scn
