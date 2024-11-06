@@ -6,7 +6,7 @@ const power_up_2_scene = preload("res://scenes/power_up_2.tscn")
 
 func die() -> void:
 	emit_signal("update_score")
-	var ranNum: int = randi_range(1,4)
+	var ranNum: int = randi_range(1,10)
 	if ranNum == 1:
 		var power_up_instance = power_up_2_scene.instantiate()
 		get_tree().current_scene.add_child(power_up_instance)

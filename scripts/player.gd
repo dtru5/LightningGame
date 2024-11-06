@@ -66,7 +66,7 @@ func shoot() -> void:
 		is_rocket_blocked = false 
 		
 func enable_rapid_fire() -> void:
-	rocket_time_limiter = 0.05
+	rocket_time_limiter = 0.1
 	rapid_fire_timer.start(3)
 	
 func hit_health_powerup() -> void:

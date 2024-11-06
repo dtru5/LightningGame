@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	
 func die() -> void:
 	emit_signal("update_score")
-	var ranNum: int = randi_range(1,5)
+	var ranNum: int = randi_range(1,10)
 	if ranNum == 3:
 		var power_up_instance = power_up_scene.instantiate()
 		get_tree().current_scene.add_child(power_up_instance)
